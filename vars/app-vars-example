@@ -1,0 +1,5 @@
+Prefix=demo
+GhOrg=hashicorp
+GhProject=terraform
+SubscriptionEmail=email@example.com
+OwnerName=owner

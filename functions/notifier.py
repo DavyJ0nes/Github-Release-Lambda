@@ -22,7 +22,7 @@ sns = session.resource('sns')
 
 def day_ago_epoch():
     logger.info("[day_ago_epoch]: Creating Epoch Timestamp")
-    day_ago = datetime.now() - timedelta(hours=240)
+    day_ago = datetime.now() - timedelta(hours=24)
     epoch = day_ago.strftime('%s')
     return epoch
 
@@ -62,8 +62,8 @@ Link: {}""".format(update['project_name'],
     return messages
 
 
-def publish_to_topic(messages):
-    logger.info("[publish_to_topic]: Publishing Message to Topic")
+def send_email(messages):
+    logger.info("[send_email]: Sending Email")
     all_messages = "\n".join(messages)
     topic = sns.Topic(SNS_TOPIC)
     topic.publish(
@@ -80,8 +80,10 @@ def lambda_handler(event, context):
     # Processing
     last_epoch = day_ago_epoch()
     updates = get_update_list(last_epoch)
+    if len(updates) == 0:
+        return "[lambda_handler]: No updates, exiting..."
     update_message = format_update_message(updates)
-    publish_to_topic(update_message)
+    send_email(update_message)
 
     # Complete
     return "[lambda_handler]: Complete"
