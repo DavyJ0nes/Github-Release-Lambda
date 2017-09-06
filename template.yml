@@ -79,7 +79,7 @@ Resources:
   KickOff:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: kick_off.lambda_handler
+      Handler: functions/kick_off.lambda_handler
       Runtime: python2.7
       Timeout: 10
       Policies:
@@ -110,7 +110,7 @@ Resources:
   UpdateGithubReleaseInfo:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: update_info.lambda_handler
+      Handler: functions/update_info.lambda_handler
       Runtime: python2.7
       Timeout: 10
       Policies:
@@ -154,7 +154,7 @@ Resources:
   NewReleaseNotifier:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: notifier.lambda_handler
+      Handler: functions/notifier.lambda_handler
       Runtime: python2.7
       Timeout: 10
       Policies:

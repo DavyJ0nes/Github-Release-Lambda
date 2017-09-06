@@ -1,6 +1,6 @@
 .DS_Store
 *secrets*
 *.ropeproject/*
-packaged-deploy-template.yaml
+packaged-template.yml
 vars/*production
 vars/dev.json
